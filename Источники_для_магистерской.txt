@@ -1,0 +1,111 @@
+Список источников для магистерской работы по проекту RainPredict
+Тема: разработка web-сервиса для прогнозирования осадков на 24 часа вперёд с использованием методов машинного обучения
+
+1. Richardson L. F. Weather Prediction by Numerical Process. Cambridge: Cambridge University Press, 1922.
+   URL: https://archive.org/details/weatherpredictio00richrich
+
+2. Wilks D. S. Statistical Methods in the Atmospheric Sciences. 4th ed. Amsterdam: Elsevier, 2019.
+   Назначение: статистическая обработка метеорологических данных и временных рядов.
+
+3. World Meteorological Organization. Guide to Instruments and Methods of Observation. WMO-No. 8.
+   URL: https://library.wmo.int/idurl/4/68695
+   Назначение: описание метеорологических наблюдений и измеряемых погодных параметров.
+
+4. Mitchell T. M. Machine Learning. New York: McGraw-Hill, 1997.
+   Назначение: базовые понятия машинного обучения.
+
+5. Bishop C. M. Pattern Recognition and Machine Learning. New York: Springer, 2006.
+   URL: https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/
+
+6. Friedman J. H. Greedy Function Approximation: A Gradient Boosting Machine // The Annals of Statistics. 2001. Vol. 29, No. 5. P. 1189-1232.
+   DOI: 10.1214/aos/1013203451
+
+7. Chen T., Guestrin C. XGBoost: A Scalable Tree Boosting System // Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. 2016. P. 785-794.
+   URL: https://arxiv.org/abs/1603.02754
+   DOI: 10.1145/2939672.2939785
+
+8. Breiman L. Random Forests // Machine Learning. 2001. Vol. 45. P. 5-32.
+   DOI: 10.1023/A:1010933404324
+
+9. Ke G., Meng Q., Finley T., Wang T., Chen W., Ma W., Ye Q., Liu T.-Y. LightGBM: A Highly Efficient Gradient Boosting Decision Tree // Advances in Neural Information Processing Systems. 2017.
+   URL: https://proceedings.neurips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html
+
+10. Prokhorenkova L., Gusev G., Vorobev A., Dorogush A. V., Gulin A. CatBoost: unbiased boosting with categorical features // Advances in Neural Information Processing Systems. 2018.
+    URL: https://arxiv.org/abs/1706.09516
+
+11. Rumelhart D. E., Hinton G. E., Williams R. J. Learning representations by back-propagating errors // Nature. 1986. Vol. 323. P. 533-536.
+    DOI: 10.1038/323533a0
+
+12. Pedregosa F., Varoquaux G., Gramfort A. et al. Scikit-learn: Machine Learning in Python // Journal of Machine Learning Research. 2011. Vol. 12. P. 2825-2830.
+    URL: https://jmlr.org/papers/v12/pedregosa11a.html
+
+13. McKinney W. Data Structures for Statistical Computing in Python // Proceedings of the 9th Python in Science Conference. 2010. P. 56-61.
+    URL: https://conference.scipy.org/proceedings/scipy2010/mckinney.html
+
+14. XGBoost documentation. XGBoost Python Package.
+    URL: https://xgboost.readthedocs.io/
+    Назначение: применение XGBClassifier и параметров модели.
+
+15. pandas documentation. pandas: Python Data Analysis Library.
+    URL: https://pandas.pydata.org/docs/
+    Назначение: загрузка CSV, подготовка табличных данных, обработка временных рядов.
+
+16. FastAPI documentation. FastAPI framework.
+    URL: https://fastapi.tiangolo.com/
+    Назначение: разработка серверной части web-сервиса и REST API.
+
+17. Starlette documentation. Starlette ASGI toolkit.
+    URL: https://www.starlette.io/
+    Назначение: описание ASGI-приложений, middleware и раздачи статических файлов.
+
+18. Uvicorn documentation. Uvicorn ASGI web server.
+    URL: https://www.uvicorn.org/
+    Назначение: запуск FastAPI-приложения и развёртывание backend-сервера.
+
+19. Pydantic documentation. Data validation using Python type hints.
+    URL: https://docs.pydantic.dev/
+    Назначение: описание моделей данных и валидации входных параметров API.
+
+20. Python Software Foundation. Python 3 Documentation.
+    URL: https://docs.python.org/3/
+    Назначение: язык программирования Python, работа с файлами, модулями и стандартной библиотекой.
+
+21. MDN Web Docs. HTML: HyperText Markup Language.
+    URL: https://developer.mozilla.org/en-US/docs/Web/HTML
+    Назначение: структура страниц пользовательского интерфейса web-приложения.
+
+22. MDN Web Docs. CSS: Cascading Style Sheets.
+    URL: https://developer.mozilla.org/en-US/docs/Web/CSS
+    Назначение: стилизация интерфейса, адаптивная вёрстка, оформление компонентов.
+
+23. MDN Web Docs. JavaScript.
+    URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+    Назначение: клиентская логика, обработка действий пользователя, динамическое обновление интерфейса.
+
+24. MDN Web Docs. Fetch API.
+    URL: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+    Назначение: отправка HTTP-запросов из frontend к backend API.
+
+25. MDN Web Docs. FormData.
+    URL: https://developer.mozilla.org/en-US/docs/Web/API/FormData
+    Назначение: загрузка CSV-файлов из браузера на сервер.
+
+26. Fielding R. T. Architectural Styles and the Design of Network-based Software Architectures: Doctoral dissertation. University of California, Irvine, 2000.
+    URL: https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
+    Назначение: архитектурные принципы REST-подхода и клиент-серверного взаимодействия.
+
+27. RFC 9110. HTTP Semantics. IETF, 2022.
+    URL: https://www.rfc-editor.org/rfc/rfc9110
+    Назначение: методы HTTP, коды ответа, семантика клиент-серверных запросов.
+
+28. WHATWG. HTML Living Standard.
+    URL: https://html.spec.whatwg.org/
+    Назначение: современный стандарт HTML и браузерных API.
+
+29. W3C. CSS Snapshot.
+    URL: https://www.w3.org/TR/CSS/
+    Назначение: стандарты CSS и описание каскадных таблиц стилей.
+
+30. Mozilla Developer Network. File API.
+    URL: https://developer.mozilla.org/en-US/docs/Web/API/File_API
+    Назначение: работа браузера с пользовательскими файлами перед загрузкой на сервер.

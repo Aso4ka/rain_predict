@@ -6,3 +6,5 @@ openpyxl
 reportlab
 python-multipart
 aiofiles
+xgboost
+scikit-learn

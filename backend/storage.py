@@ -1,10 +1,13 @@
 import os
+from pathlib import Path
 
 MAX_STORAGE_SIZE = 500 * 1024 * 1024
 
-DATASET_PATH = "storage/datasets"
-FORECAST_PATH = "storage/forecasts"
-EXPORT_PATH = "storage/exports"
+BASE_DIR = Path(__file__).resolve().parent.parent
+STORAGE_PATH = BASE_DIR / "storage"
+DATASET_PATH = STORAGE_PATH / "datasets"
+FORECAST_PATH = STORAGE_PATH / "forecasts"
+EXPORT_PATH = STORAGE_PATH / "exports"
 
 
 def get_folder_size(folder):

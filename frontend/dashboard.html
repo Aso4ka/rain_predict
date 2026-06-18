@@ -3,288 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Личный кабинет</title>
+    <title>Прогноз на сутки</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <header>
     <div class="container">
         <nav>
-            <div class="logo">RainPredict</div>
+            <a class="logo" href="index.html">RainPredict</a>
 
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="register.html">Регистрация</a></li>
+                <li><a class="active" href="dashboard.html">Прогноз</a></li>
                 <li><a href="about.html">О нас</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
                 <li><a href="feedback.html">Отзывы</a></li>
-                
             </ul>
         </nav>
     </div>
 </header>
 
-<div class="card">
+<main class="dashboard-page">
+    <section class="card">
+        <h1>Прогноз осадков на ближайшие 24 часа</h1>
+        <p class="muted-text">
+            Загрузите CSV с погодными наблюдениями. Сервис рассчитает вероятность
+            осадков на сутки вперёд по последней записи датасета.
+        </p>
 
-    <h3>Загрузить датасет</h3>
-
-    <input
-        type="file"
-        id="datasetFile"
-        accept=".csv"
-    >
-
-    <button
-        class="btn"
-        onclick="uploadDataset()"
-    >
-        Загрузить
-    </button>
-
-</div>
-
-<div class="card">
-
-    <h3>Загруженные датасеты</h3>
-
-    <div id="datasetList">
-
-    </div>
-
-</div>
-
-<div class="container">
-
-    <table class="forecast-table">
-
-        <thead>
-            <tr>
-                <th>Дата</th>
-                <th>Осадки (мм)</th>
-                <th>Вероятность</th>
-            </tr>
-        </thead>
-
-        <tbody id="forecastTable">
-
-            <tr>
-                <td>01.06.2026</td>
-                <td>10</td>
-                <td>35%</td>
-            </tr>
-
-            <tr>
-                <td>02.06.2026</td>
-                <td>30</td>
-                <td>60%</td>
-            </tr>
-
-            <tr>
-                <td>03.06.2026</td>
-                <td>20</td>
-                <td>40%</td>
-            </tr>
-
-        </tbody>
-
-    </table>
-
-</div>
-
-<div class="export-buttons">
-
-    <select id="forecastSelect">
-        <option value="forecast_test.csv">
-             forecast_test.csv
-        </option>
-    </select>
-
-        <button class="btn export-btn" onclick="downloadPDF()">
-            Скачать PDF
-        </button>
-
-        <button class="btn export-btn" onclick="downloadPNG()">
-            Скачать PNG
-        </button>
-
-        <button class="btn export-btn" onclick="downloadXLS()">
-            Скачать XLS
-        </button>
-
-        <button class="btn share-btn" onclick="shareForecast()">
-            Поделиться прогнозом
-        </button>
-
-
-
-        
-
-    </div>
-
-        <div class="dashboard-grid">
-
-            <div class="weather-card">
-                <h3>1 день</h3>
-                <p>Вероятность осадков: 35%</p>
-            </div>
-
-            <div class="weather-card">
-                <h3>7 дней</h3>
-                <p>Небольшие осадки</p>
-            </div>
-
-            <div class="weather-card">
-                <h3>14 дней</h3>
-                <p>Умеренные дожди</p>
-            </div>
-
-            <div class="weather-card">
-                <h3>21 день</h3>
-                <p>Высокая влажность</p>
-            </div>
-
+        <div class="upload-panel">
+            <input type="file" id="datasetFile" accept=".csv">
+            <button class="btn" type="button" id="forecastButton">Рассчитать сутки</button>
         </div>
-    </div>
 
-</div>
+        <p class="status-text" id="statusText">Backend: проверяем подключение...</p>
+    </section>
+
+    <section class="dashboard-grid" id="summaryCards">
+        <div class="weather-card">
+            <h3>Горизонт</h3>
+            <p id="weekValue">24 часа вперёд</p>
+        </div>
+
+        <div class="weather-card">
+            <h3>Осадки</h3>
+            <p id="oneDayValue">Нет данных</p>
+        </div>
+
+        <div class="weather-card">
+            <h3>Модель</h3>
+            <p id="twoWeeksValue">model_xgb_24h</p>
+        </div>
+
+        <div class="weather-card">
+            <h3>Итог</h3>
+            <p id="threeWeeksValue">Нет данных</p>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="section-heading">
+            <div>
+                <h2>Результат прогноза</h2>
+                <p class="muted-text">
+                    В таблице показан прогноз на следующие сутки: дата, ожидаемые осадки
+                    и вероятность их появления.
+                </p>
+            </div>
+
+            <select id="forecastSelect" aria-label="Выбор прогноза"></select>
+        </div>
+
+        <canvas id="forecastCanvas" width="980" height="260" aria-label="Вероятность осадков на сутки"></canvas>
+
+        <div class="forecast-table-container">
+            <table class="forecast-table">
+                <thead>
+                    <tr>
+                        <th>Дата прогноза</th>
+                        <th>Ожидаемые осадки, мм</th>
+                        <th>Вероятность осадков</th>
+                    </tr>
+                </thead>
+                <tbody id="forecastTable">
+                    <tr>
+                        <td colspan="3">Загрузите CSV, чтобы получить прогноз на сутки</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="export-buttons">
+            <button class="btn export-btn" type="button" data-format="pdf">Скачать PDF</button>
+            <button class="btn export-btn" type="button" data-format="png">Скачать PNG</button>
+            <button class="btn export-btn" type="button" data-format="xls">Скачать XLS</button>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Загруженные датасеты</h2>
+        <p class="muted-text">Здесь отображаются CSV-файлы, по которым можно строить прогнозы на сутки.</p>
+        <div class="file-list" id="datasetList">Список пуст</div>
+    </section>
+</main>
 
 <footer>
     © 2026 RainPredict
 </footer>
-    <script>
 
-    const ctx = document.getElementById('forecastChart');
-
-    new Chart(ctx, {
-
-        type: 'line',
-
-        data: {
-
-            labels: [
-            '01.06',
-            '02.06',
-            '03.06',
-            '04.06',
-            '05.06'
-            ],
-
-            datasets: [{
-                label: 'Осадки (мм)',
-
-                data: [10, 30, 20, 50, 40],
-
-                borderColor: '#2b6cb0',
-
-                borderWidth: 3,
-
-                tension: 0.4
-        }]
-    },
-
-    options: {
-        responsive: true
-    }
-});
-
-</script>
-
-<script>
-
-
-function getForecastName() {
-    return document
-        .getElementById("forecastSelect")
-        .value;
-}
-
-function downloadPDF() {
-
-    const file = getForecastName();
-
-    window.open(
-        `http://127.0.0.1:8000/download/pdf/${file}`
-    );
-}
-
-function downloadPNG() {
-
-    const file = getForecastName();
-
-    window.open(
-        `http://127.0.0.1:8000/download/png/${file}`
-    );
-}
-
-function downloadXLS() {
-
-    const file = getForecastName();
-
-    window.open(
-        `http://127.0.0.1:8000/download/xls/${file}`
-    );
-}
-
-</script>
-
-<script>
-
-async function shareForecast() {
-
-    if (navigator.share) {
-
-        await navigator.share({
-            title: 'RainPredict',
-            text: 'Мой прогноз осадков',
-            url: window.location.href
-        });
-
-    } else {
-
-        alert("Share API не поддерживается браузером");
-    }
-}
-
-</script>
-
-<script>
-
-async function uploadDataset() {
-
-    const fileInput =
-        document.getElementById("datasetFile");
-
-    const file = fileInput.files[0];
-
-    if (!file) {
-        alert("Выберите CSV");
-        return;
-    }
-
-    const formData = new FormData();
-
-    formData.append("file", file);
-
-    const response = await fetch(
-        "http://127.0.0.1:8000/upload-dataset",
-        {
-            method: "POST",
-            body: formData
-        }
-    );
-
-    const data = await response.json();
-
-    alert(data.message || data.error);
-}
-
-loadDatasets();
-
-</script>
-
-
-
+<script src="app.js"></script>
 </body>
 </html>

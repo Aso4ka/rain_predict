@@ -4,54 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О нас</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
     <div class="container">
-
         <nav>
-
-            <div class="logo">RainPredict</div>
+            <a class="logo" href="index.html">RainPredict</a>
 
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="register.html">Регистрация</a></li>
-                <li><a href="dashboard.html">Личный кабинет</a></li>
+                <li><a href="dashboard.html">Прогноз</a></li>
+                <li><a class="active" href="about.html">О нас</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
                 <li><a href="feedback.html">Отзывы</a></li>
             </ul>
-
         </nav>
-
     </div>
 </header>
 
-<div class="container">
+<main class="container">
+    <section class="card">
+        <h1>О RainPredict</h1>
 
-    <div class="card">
-
-        <h1>О нас</h1>
-
-        <br>
-
-        <p>
-            RainPredict — сервис прогнозирования осадков
-            на основе ML-моделей и анализа климатических данных.
+        <p class="muted-text">
+            RainPredict — сервис для прогноза осадков на ближайшие сутки.
+            Он анализирует загруженный CSV с погодными наблюдениями и рассчитывает
+            вероятность дождя или снега на 24 часа вперёд.
         </p>
 
-        <br>
-
-        <p>
-            Система позволяет строить прогнозы
-            на 1 день, неделю, 2 и 3 недели.
+        <p class="muted-text">
+            В основе расчёта используется модель model_xgb_24h. Для лучшего результата
+            в датасете должны быть погодные признаки: осадки, температура, влажность,
+            давление, скорость и направление ветра.
         </p>
-
-    </div>
-
-</div>
+    </section>
+</main>
 
 <footer>
     © 2026 RainPredict

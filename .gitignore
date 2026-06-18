@@ -3,3 +3,7 @@
 */__pycache__*
 .vscode/
 venv
+.matplotlib/
+backend_server*.log
+sample_*.csv
+storage/

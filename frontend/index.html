@@ -6,17 +6,17 @@
     <title>RainPredict</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home-page">
 
 <header>
     <div class="container">
         <nav>
-            <div class="logo">RainPredict</div>
+            <a class="logo" href="index.html">RainPredict</a>
 
             <ul>
-                <li><a href="index.html">Главная</a></li>
+                <li><a class="active" href="index.html">Главная</a></li>
                 <li><a href="register.html">Регистрация</a></li>
-                <li><a href="dashboard.html">Личный кабинет</a></li>
+                <li><a href="dashboard.html">Прогноз</a></li>
                 <li><a href="about.html">О нас</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
                 <li><a href="feedback.html">Отзывы</a></li>
@@ -25,16 +25,82 @@
     </div>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>Прогноз осадков</h1>
-        <p>Точный прогноз на 1 день, неделю, 2 и 3 недели</p>
+<main>
+    <section class="hero">
+        <div class="container hero-layout">
+            <div class="hero-content">
+                <span class="eyebrow">Прогноз на ближайшие 24 часа</span>
 
-        <a href="register.html" class="btn">
-            Начать
-        </a>
-    </div>
-</section>
+                <h1>Узнайте, будут ли осадки завтра</h1>
+
+                <p>
+                    RainPredict анализирует погодный CSV-файл и оценивает вероятность
+                    осадков на сутки вперёд с помощью модели model_xgb_24h.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="dashboard.html" class="btn">Загрузить датасет</a>
+                    <a href="about.html" class="btn secondary-btn">Как это работает</a>
+                </div>
+            </div>
+
+            <div class="forecast-preview" aria-label="Пример прогноза на сутки">
+                <div class="preview-header">
+                    <div>
+                        <span>Следующие сутки</span>
+                        <strong>Вероятность осадков</strong>
+                    </div>
+                    <div class="weather-icon">☔</div>
+                </div>
+
+                <div class="rain-meter">
+                    <span style="height: 18%"></span>
+                    <span style="height: 26%"></span>
+                    <span style="height: 44%"></span>
+                    <span style="height: 71%"></span>
+                    <span style="height: 66%"></span>
+                    <span style="height: 48%"></span>
+                    <span style="height: 31%"></span>
+                </div>
+
+                <div class="forecast-row">
+                    <span>Горизонт прогноза</span>
+                    <strong>24 часа</strong>
+                </div>
+                <div class="forecast-row">
+                    <span>Модель</span>
+                    <strong>XGBoost</strong>
+                </div>
+                <div class="forecast-row">
+                    <span>Результат</span>
+                    <strong>Вероятность и мм</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container feature-grid">
+            <article class="feature-card">
+                <span>01</span>
+                <h2>Загрузите CSV</h2>
+                <p>Используйте датасет с погодными наблюдениями: осадки, температура, влажность, давление и ветер.</p>
+            </article>
+
+            <article class="feature-card">
+                <span>02</span>
+                <h2>Получите прогноз</h2>
+                <p>Сервис берёт последнюю строку датасета и рассчитывает вероятность осадков на следующие сутки.</p>
+            </article>
+
+            <article class="feature-card">
+                <span>03</span>
+                <h2>Сохраните результат</h2>
+                <p>Готовый прогноз можно скачать в PDF, PNG или XLS для отчёта или передачи коллегам.</p>
+            </article>
+        </div>
+    </section>
+</main>
 
 <footer>
     © 2026 RainPredict
