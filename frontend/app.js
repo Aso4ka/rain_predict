@@ -200,7 +200,7 @@ function updateSummary(rows) {
     const row = rows[0];
     setText("oneDayValue", `${row.rain} мм, ${row.probability}%`);
     setText("weekValue", "24 часа вперёд");
-    setText("twoWeeksValue", "model_xgb_24h");
+    setText("twoWeeksValue", "model_lightgbm_24h");
     setText("threeWeeksValue", Number(row.probability) >= 50 ? "Осадки вероятны" : "Осадки маловероятны");
 }
 
